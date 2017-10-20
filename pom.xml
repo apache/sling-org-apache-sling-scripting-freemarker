@@ -43,9 +43,9 @@
   </properties>
 
   <scm>
-    <connection>scm:svn:http://svn.apache.org/repos/asf/sling/trunk/contrib/scripting/freemarker</connection>
-    <developerConnection>scm:svn:https://svn.apache.org/repos/asf/sling/trunk/contrib/scripting/freemarker</developerConnection>
-    <url>http://svn.apache.org/viewvc/sling/trunk/contrib/scripting/freemarker</url>
+    <connection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-scripting-freemarker.git</conncetion>
+    <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/sling-org-apache-sling-scripting-freemarker.git</developerConnection>
+    <url>https://gitbox.apache.org/repos/asf?p=sling-org-apache-sling-scripting-freemarker.git</url>
   </scm>
 
   <build>
