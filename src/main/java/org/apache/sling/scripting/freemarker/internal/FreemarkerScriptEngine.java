@@ -52,12 +52,6 @@ public class FreemarkerScriptEngine extends AbstractSlingScriptEngine {
             throw new ScriptException("SlingScriptHelper missing from bindings");
         }
 
-        // ensure GET request
-        if (!"GET".equals(helper.getRequest().getMethod())) {
-            throw new ScriptException(
-                "FreeMarker templates only support GET requests");
-        }
-
         freemarkerScriptEngineFactory.getTemplateModels().forEach(bindings::put);
 
         final String scriptName = helper.getScript().getScriptResource().getPath();
