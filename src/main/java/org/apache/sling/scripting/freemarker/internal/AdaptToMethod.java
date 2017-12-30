@@ -32,6 +32,7 @@ import org.osgi.service.component.annotations.Reference;
         TemplateModel.class
     },
     property = {
+        "namespace=sling",
         "name=adaptTo"
     }
 )

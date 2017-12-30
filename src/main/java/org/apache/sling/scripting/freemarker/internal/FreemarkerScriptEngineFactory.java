@@ -18,6 +18,7 @@
  */
 package org.apache.sling.scripting.freemarker.internal;
 
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,6 +27,7 @@ import javax.script.ScriptEngineFactory;
 
 import freemarker.template.Configuration;
 import freemarker.template.TemplateModel;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.commons.osgi.SortingServiceTracker;
 import org.apache.sling.scripting.api.AbstractScriptEngineFactory;
 import org.osgi.framework.BundleContext;
@@ -104,10 +106,17 @@ public class FreemarkerScriptEngineFactory extends AbstractScriptEngineFactory {
         return Configuration.getVersion().toString();
     }
 
-    Map<String, TemplateModel> getTemplateModels() {
-        final Map<String, TemplateModel> models = new HashMap<>();
+    Map<String, Map<String, TemplateModel>> getTemplateModels() {
+        final Map<String, Map<String, TemplateModel>> models = new HashMap<>();
         for (final ServiceReference<TemplateModel> serviceReference : templateModelTracker.getSortedServiceReferences()) {
-            models.put(serviceReference.getProperty("name").toString(), bundleContext.getService(serviceReference));
+            final String namespace = (String) serviceReference.getProperty("namespace");
+            final String name = (String) serviceReference.getProperty("name");
+            if (StringUtils.isNotBlank(namespace) && StringUtils.isNotBlank(name)) {
+                if (!models.containsKey(namespace)) {
+                    models.put(namespace, new HashMap<>());
+                }
+                models.get(namespace).put(name, bundleContext.getService(serviceReference));
+            }
         }
         return models;
     }
