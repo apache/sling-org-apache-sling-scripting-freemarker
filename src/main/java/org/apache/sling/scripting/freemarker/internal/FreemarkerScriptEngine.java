@@ -45,14 +45,14 @@ public class FreemarkerScriptEngine extends AbstractSlingScriptEngine {
         configuration.setDefaultEncoding(StandardCharsets.UTF_8.name());
     }
 
-    public Object eval(Reader reader, ScriptContext scriptContext) throws ScriptException {
+    public Object eval(final Reader reader, final ScriptContext scriptContext) throws ScriptException {
         final Bindings bindings = scriptContext.getBindings(ScriptContext.ENGINE_SCOPE);
         final SlingScriptHelper helper = (SlingScriptHelper) bindings.get(SlingBindings.SLING);
         if (helper == null) {
             throw new ScriptException("SlingScriptHelper missing from bindings");
         }
 
-        freemarkerScriptEngineFactory.getTemplateModels().forEach(bindings::put);
+        bindings.putAll(freemarkerScriptEngineFactory.getTemplateModels());
 
         final String scriptName = helper.getScript().getScriptResource().getPath();
 
