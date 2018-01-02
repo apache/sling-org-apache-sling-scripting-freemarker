@@ -37,6 +37,10 @@ import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Deactivate;
 import org.osgi.service.component.annotations.Modified;
+import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferenceCardinality;
+import org.osgi.service.component.annotations.ReferencePolicy;
+import org.osgi.service.component.annotations.ReferencePolicyOption;
 import org.osgi.service.metatype.annotations.Designate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,15 +58,26 @@ import org.slf4j.LoggerFactory;
 )
 public class FreemarkerScriptEngineFactory extends AbstractScriptEngineFactory {
 
+    @Reference(
+        cardinality = ReferenceCardinality.OPTIONAL,
+        policy = ReferencePolicy.DYNAMIC,
+        policyOption = ReferencePolicyOption.GREEDY
+    )
+    private volatile Configuration configuration;
+
     private BundleContext bundleContext;
 
     private SortingServiceTracker<TemplateModel> templateModelTracker;
+
+    private final Configuration defaultConfiguration;
 
     private static final String FREEMARKER_NAME = "FreeMarker";
 
     private final Logger logger = LoggerFactory.getLogger(FreemarkerScriptEngineFactory.class);
 
     public FreemarkerScriptEngineFactory() {
+        defaultConfiguration = new Configuration(Configuration.getVersion());
+        defaultConfiguration.setDefaultEncoding(StandardCharsets.UTF_8.name());
     }
 
     @Activate
@@ -104,6 +119,15 @@ public class FreemarkerScriptEngineFactory extends AbstractScriptEngineFactory {
 
     public String getLanguageVersion() {
         return Configuration.getVersion().toString();
+    }
+
+    Configuration getConfiguration() {
+        final Configuration configuration = this.configuration;
+        if (configuration != null) {
+            return configuration;
+        } else {
+            return defaultConfiguration;
+        }
     }
 
     Map<String, Map<String, TemplateModel>> getTemplateModels() {

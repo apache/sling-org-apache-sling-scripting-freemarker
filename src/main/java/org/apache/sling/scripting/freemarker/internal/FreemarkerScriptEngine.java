@@ -17,7 +17,6 @@
 package org.apache.sling.scripting.freemarker.internal;
 
 import java.io.Reader;
-import java.nio.charset.StandardCharsets;
 
 import javax.script.Bindings;
 import javax.script.ScriptContext;
@@ -32,8 +31,6 @@ import org.apache.sling.scripting.api.AbstractSlingScriptEngine;
 
 public class FreemarkerScriptEngine extends AbstractSlingScriptEngine {
 
-    private final Configuration configuration;
-
     private final FreemarkerScriptEngineFactory freemarkerScriptEngineFactory;
 
     private final Logger logger = Logger.getLogger(FreemarkerScriptEngine.class.getName());
@@ -41,8 +38,6 @@ public class FreemarkerScriptEngine extends AbstractSlingScriptEngine {
     public FreemarkerScriptEngine(final FreemarkerScriptEngineFactory freemarkerScriptEngineFactory) {
         super(freemarkerScriptEngineFactory);
         this.freemarkerScriptEngineFactory = freemarkerScriptEngineFactory;
-        configuration = new Configuration(Configuration.getVersion());
-        configuration.setDefaultEncoding(StandardCharsets.UTF_8.name());
     }
 
     public Object eval(final Reader reader, final ScriptContext scriptContext) throws ScriptException {
@@ -55,6 +50,7 @@ public class FreemarkerScriptEngine extends AbstractSlingScriptEngine {
         bindings.putAll(freemarkerScriptEngineFactory.getTemplateModels());
 
         final String scriptName = helper.getScript().getScriptResource().getPath();
+        final Configuration configuration = freemarkerScriptEngineFactory.getConfiguration();
 
         try {
             final Template template = new Template(scriptName, reader, configuration);

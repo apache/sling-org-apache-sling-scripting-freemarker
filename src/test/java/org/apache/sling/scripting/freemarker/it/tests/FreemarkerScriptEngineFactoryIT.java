@@ -18,6 +18,11 @@
  */
 package org.apache.sling.scripting.freemarker.it.tests;
 
+import javax.inject.Inject;
+
+import org.apache.commons.lang3.reflect.FieldUtils;
+import org.apache.sling.scripting.freemarker.it.app.Ranked1Configuration;
+import org.apache.sling.scripting.freemarker.it.app.Ranked2Configuration;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.ops4j.pax.exam.Configuration;
@@ -25,9 +30,11 @@ import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.junit.PaxExam;
 import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerClass;
+import org.ops4j.pax.exam.util.Filter;
 
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.sameInstance;
 import static org.hamcrest.Matchers.startsWith;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
@@ -36,10 +43,18 @@ import static org.junit.Assert.assertThat;
 @ExamReactorStrategy(PerClass.class)
 public class FreemarkerScriptEngineFactoryIT extends FreemarkerTestSupport {
 
+    @Inject
+    @Filter("(name=bar)")
+    private freemarker.template.Configuration configuration;
+
     @Configuration
     public Option[] configuration() {
         return new Option[]{
-            baseConfiguration()
+            baseConfiguration(),
+            buildBundleWithBnd(
+                Ranked1Configuration.class,
+                Ranked2Configuration.class
+            )
         };
     }
 
@@ -66,6 +81,13 @@ public class FreemarkerScriptEngineFactoryIT extends FreemarkerTestSupport {
     @Test
     public void testScriptEngineFactoryNames() {
         assertThat(scriptEngineFactory.getNames(), hasItem("freemarker"));
+    }
+
+    @Test
+    public void testConfiguration() throws IllegalAccessException {
+        final Object configuration = FieldUtils.readDeclaredField(scriptEngineFactory, "configuration", true);
+        assertThat(configuration, sameInstance(this.configuration));
+        assertThat(configuration.getClass().getName(), is("org.apache.sling.scripting.freemarker.it.app.Ranked2Configuration"));
     }
 
 }
