@@ -62,7 +62,7 @@ public abstract class FreemarkerTestSupport extends TestSupport {
     public Option baseConfiguration() {
         return composite(
             super.baseConfiguration(),
-            quickstart(),
+            slingQuickstart(),
             // Sling Scripting FreeMarker
             testBundle("bundle.filename"),
             mavenBundle().groupId("org.freemarker").artifactId("freemarker").versionAsInProject(),
@@ -87,7 +87,7 @@ public abstract class FreemarkerTestSupport extends TestSupport {
         return testProbeBuilder;
     }
 
-    protected Option quickstart() {
+    protected Option slingQuickstart() {
         final int httpPort = findFreePort();
         final String workingDirectory = workingDirectory();
         return composite(
