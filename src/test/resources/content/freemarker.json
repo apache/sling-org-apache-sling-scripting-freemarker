@@ -14,5 +14,11 @@
         "sling:resourceType": "freemarker/page/adaptto",
         "sling:resourceSuperType": "freemarker/page",
         "title": "Sling Models adaptTo()"
+    },
+    "include": {
+        "jcr:primaryType": "nt:unstructured",
+        "sling:resourceType": "freemarker/page/include",
+        "sling:resourceSuperType": "freemarker/page",
+        "title": "Sling Include"
     }
 }

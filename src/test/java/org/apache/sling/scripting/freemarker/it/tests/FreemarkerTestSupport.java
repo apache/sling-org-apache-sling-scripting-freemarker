@@ -36,6 +36,7 @@ import static org.apache.sling.testing.paxexam.SlingOptions.slingModels;
 import static org.apache.sling.testing.paxexam.SlingOptions.slingQuickstartOakTar;
 import static org.apache.sling.testing.paxexam.SlingOptions.slingResourcePresence;
 import static org.apache.sling.testing.paxexam.SlingOptions.slingScripting;
+import static org.apache.sling.testing.paxexam.SlingOptions.slingScriptingJsp;
 import static org.ops4j.pax.exam.CoreOptions.composite;
 import static org.ops4j.pax.exam.CoreOptions.junitBundles;
 import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
@@ -80,6 +81,7 @@ public abstract class FreemarkerTestSupport extends TestSupport {
         testProbeBuilder.setHeader("Sling-Model-Packages", "org.apache.sling.scripting.freemarker.it.app");
         testProbeBuilder.setHeader("Sling-Initial-Content", String.join(",",
             "apps/freemarker;path:=/apps/freemarker;overwrite:=true;uninstall:=true",
+            "apps/jsp;path:=/apps/jsp;overwrite:=true;uninstall:=true",
             "content;path:=/content;overwrite:=true;uninstall:=true"
         ));
         return testProbeBuilder;
@@ -91,7 +93,8 @@ public abstract class FreemarkerTestSupport extends TestSupport {
         return composite(
             slingQuickstartOakTar(workingDirectory, httpPort),
             slingModels(),
-            slingScripting()
+            slingScripting(),
+            slingScriptingJsp()
         );
     }
 
