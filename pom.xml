@@ -30,7 +30,6 @@
 
   <artifactId>org.apache.sling.scripting.freemarker</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  <packaging>bundle</packaging>
 
   <name>Apache Sling Scripting FreeMarker</name>
   <description>Support for FreeMarker scripting</description>
@@ -51,15 +50,8 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
-        <extensions>true</extensions>
-        <configuration>
-          <instructions>
-            <ScriptEngine-Name>${project.name}</ScriptEngine-Name>
-            <ScriptEngine-Version>${project.version}</ScriptEngine-Version>
-          </instructions>
-        </configuration>
+        <groupId>biz.aQute.bnd</groupId>
+        <artifactId>bnd-maven-plugin</artifactId>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
