@@ -12,10 +12,6 @@ ScriptEngine-Name: ${project.name}
 
 ScriptEngine-Version: ${project.version}
 
--baseline: *
-
 -removeheaders:\
-  Embed-Dependency,\
-  Embed-Transitive,\
   Include-Resource,\
   Private-Package
