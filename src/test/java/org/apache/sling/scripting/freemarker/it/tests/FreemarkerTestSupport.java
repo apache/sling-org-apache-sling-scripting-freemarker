@@ -21,6 +21,7 @@ package org.apache.sling.scripting.freemarker.it.tests;
 import javax.inject.Inject;
 import javax.script.ScriptEngineFactory;
 
+import org.apache.sling.api.adapter.AdapterFactory;
 import org.apache.sling.api.servlets.ServletResolver;
 import org.apache.sling.auth.core.AuthenticationSupport;
 import org.apache.sling.engine.SlingRequestProcessor;
@@ -45,6 +46,11 @@ public abstract class FreemarkerTestSupport extends TestSupport {
 
     @Inject
     protected ServletResolver servletResolver;
+
+    // SlingScriptAdapterFactory
+    @Inject
+    @Filter(value = "(adapters=org.apache.sling.api.scripting.SlingScript)")
+    protected AdapterFactory adapterFactory;
 
     @Inject
     protected SlingRequestProcessor slingRequestProcessor;
