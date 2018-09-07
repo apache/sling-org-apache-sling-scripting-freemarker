@@ -22,8 +22,8 @@ import org.osgi.service.metatype.annotations.AttributeDefinition;
 import org.osgi.service.metatype.annotations.ObjectClassDefinition;
 
 @ObjectClassDefinition(
-    name = "Apache Sling Scripting FreeMarker “ScriptEngine Factory”",
-    description = "scripting engine for FreeMarker templates"
+    name = "Apache Sling Scripting FreeMarker ScriptEngineFactory",
+    description = "Scripting engine for FreeMarker templates"
 )
 @interface FreemarkerScriptEngineFactoryConfiguration {
 

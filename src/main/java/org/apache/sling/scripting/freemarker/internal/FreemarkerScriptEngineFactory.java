@@ -49,7 +49,7 @@ import org.slf4j.LoggerFactory;
     service = ScriptEngineFactory.class,
     immediate = true,
     property = {
-        Constants.SERVICE_DESCRIPTION + "=Scripting engine for FreeMarker templates",
+        Constants.SERVICE_DESCRIPTION + "=Apache Sling Scripting FreeMarker ScriptEngineFactory",
         Constants.SERVICE_VENDOR + "=The Apache Software Foundation"
     }
 )
