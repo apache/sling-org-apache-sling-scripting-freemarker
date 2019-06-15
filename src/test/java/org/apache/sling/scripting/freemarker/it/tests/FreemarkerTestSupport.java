@@ -29,6 +29,7 @@ import org.apache.sling.testing.paxexam.TestSupport;
 import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
+import org.ops4j.pax.exam.options.ModifiableCompositeOption;
 import org.ops4j.pax.exam.util.Filter;
 import org.osgi.framework.Constants;
 import org.osgi.service.http.HttpService;
@@ -65,7 +66,7 @@ public abstract class FreemarkerTestSupport extends TestSupport {
     @Filter(value = "(names=freemarker)")
     protected ScriptEngineFactory scriptEngineFactory;
 
-    public Option baseConfiguration() {
+    public ModifiableCompositeOption baseConfiguration() {
         return composite(
             super.baseConfiguration(),
             slingQuickstart(),
