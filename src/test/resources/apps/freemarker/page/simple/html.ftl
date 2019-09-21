@@ -17,7 +17,7 @@
     specific language governing permissions and limitations
     under the License.
 -->
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <title>${resource.valueMap.title!''?html}</title>

@@ -18,7 +18,7 @@
     under the License.
 -->
 <#assign page = sling.adaptTo(request, "org.apache.sling.scripting.freemarker.it.app.Page")>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8"/>
   <title>${page.title!'title'?html}</title>
