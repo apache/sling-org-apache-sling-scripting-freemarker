@@ -86,11 +86,7 @@ public abstract class FreemarkerTestSupport extends TestSupport {
     public TestProbeBuilder probeConfiguration(final TestProbeBuilder testProbeBuilder) {
         testProbeBuilder.setHeader(Constants.EXPORT_PACKAGE, "org.apache.sling.scripting.freemarker.it.app");
         testProbeBuilder.setHeader("Sling-Model-Packages", "org.apache.sling.scripting.freemarker.it.app");
-        testProbeBuilder.setHeader("Sling-Initial-Content", String.join(",",
-            "apps/freemarker;path:=/apps/freemarker;overwrite:=true;uninstall:=true",
-            "apps/jsp;path:=/apps/jsp;overwrite:=true;uninstall:=true",
-            "content;path:=/content;overwrite:=true;uninstall:=true"
-        ));
+        testProbeBuilder.setHeader("Sling-Initial-Content", "initial-content");
         return testProbeBuilder;
     }
 
