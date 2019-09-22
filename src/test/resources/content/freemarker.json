@@ -7,7 +7,7 @@
         "jcr:primaryType": "nt:unstructured",
         "sling:resourceType": "freemarker/page/simple",
         "sling:resourceSuperType": "freemarker/page",
-        "title": "freemarker simple"
+        "title": "FreeMarker Simple"
     },
     "adaptto": {
         "jcr:primaryType": "nt:unstructured",

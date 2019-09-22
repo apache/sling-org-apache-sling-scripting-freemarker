@@ -68,7 +68,7 @@ public class SimpleIT extends FreemarkerTestSupport {
 
     @Test
     public void testTitle() {
-        assertThat(document.title(), is("freemarker simple"));
+        assertThat(document.title(), is("FreeMarker Simple"));
     }
 
     @Test
