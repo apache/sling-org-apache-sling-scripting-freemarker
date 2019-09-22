@@ -54,6 +54,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
         description = "names"
     )
     String[] names() default {
+        "FreeMarker",
         "freemarker"
     };
 
