@@ -38,6 +38,7 @@ import static org.hamcrest.Matchers.sameInstance;
 import static org.hamcrest.Matchers.startsWith;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
+import static org.ops4j.pax.exam.CoreOptions.options;
 
 @RunWith(PaxExam.class)
 @ExamReactorStrategy(PerClass.class)
@@ -49,13 +50,13 @@ public class FreemarkerScriptEngineFactoryIT extends FreemarkerTestSupport {
 
     @Configuration
     public Option[] configuration() {
-        return new Option[]{
+        return options(
             baseConfiguration(),
             buildBundleWithBnd(
                 Ranked1Configuration.class,
                 Ranked2Configuration.class
             )
-        };
+        );
     }
 
     @Test

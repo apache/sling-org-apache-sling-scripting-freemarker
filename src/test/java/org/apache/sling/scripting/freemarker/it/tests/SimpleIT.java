@@ -38,6 +38,7 @@ import org.ops4j.pax.exam.util.Filter;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import static org.ops4j.pax.exam.CoreOptions.options;
 import static org.ops4j.pax.exam.cm.ConfigurationAdminOptions.factoryConfiguration;
 
 @RunWith(PaxExam.class)
@@ -52,12 +53,12 @@ public class SimpleIT extends FreemarkerTestSupport {
 
     @Configuration
     public Option[] configuration() {
-        return new Option[]{
+        return options(
             baseConfiguration(),
             factoryConfiguration("org.apache.sling.resource.presence.internal.ResourcePresenter")
                 .put("path", "/apps/freemarker/page/simple/html.ftl")
-                .asOption(),
-        };
+                .asOption()
+        );
     }
 
     @Before
