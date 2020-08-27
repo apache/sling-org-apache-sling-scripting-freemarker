@@ -25,6 +25,7 @@ import org.osgi.service.metatype.annotations.ObjectClassDefinition;
     name = "Apache Sling Scripting FreeMarker ScriptEngineFactory",
     description = "Scripting engine for FreeMarker templates"
 )
+@SuppressWarnings("java:S100")
 @interface FreemarkerScriptEngineFactoryConfiguration {
 
     @AttributeDefinition(
