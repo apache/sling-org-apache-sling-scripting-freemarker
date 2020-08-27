@@ -56,6 +56,7 @@ import org.slf4j.LoggerFactory;
 @Designate(
     ocd = FreemarkerScriptEngineFactoryConfiguration.class
 )
+@SuppressWarnings("java:S3077")
 public class FreemarkerScriptEngineFactory extends AbstractScriptEngineFactory {
 
     @Reference(
