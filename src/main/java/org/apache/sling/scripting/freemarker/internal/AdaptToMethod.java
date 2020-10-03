@@ -44,7 +44,7 @@ public class AdaptToMethod implements TemplateMethodModelEx {
     @Reference
     private DynamicClassLoaderManager dynamicClassLoaderManager;
 
-    public AdaptToMethod() {
+    public AdaptToMethod() { //
     }
 
     @Override
