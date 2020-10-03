@@ -27,6 +27,7 @@ import javax.script.ScriptEngineFactory;
 
 import freemarker.template.Configuration;
 import freemarker.template.TemplateModel;
+import freemarker.template.Version;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.commons.osgi.SortingServiceTracker;
 import org.apache.sling.scripting.api.AbstractScriptEngineFactory;
@@ -77,7 +78,9 @@ public class FreemarkerScriptEngineFactory extends AbstractScriptEngineFactory {
     private final Logger logger = LoggerFactory.getLogger(FreemarkerScriptEngineFactory.class);
 
     public FreemarkerScriptEngineFactory() {
-        defaultConfiguration = new Configuration(Configuration.getVersion());
+        final String version = Configuration.getVersion().toString();
+        final Version incompatibleImprovements = new Version(version);
+        defaultConfiguration = new Configuration(incompatibleImprovements);
         defaultConfiguration.setDefaultEncoding(StandardCharsets.UTF_8.name());
     }
 
