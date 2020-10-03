@@ -38,7 +38,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <sling.java.version>8</sling.java.version>
-    <org.ops4j.pax.exam.version>4.13.3</org.ops4j.pax.exam.version>
+    <org.ops4j.pax.exam.version>4.13.4</org.ops4j.pax.exam.version>
   </properties>
 
   <scm>
@@ -254,7 +254,7 @@
     <dependency>
       <groupId>org.jsoup</groupId>
       <artifactId>jsoup</artifactId>
-      <version>1.11.3</version>
+      <version>1.13.1</version>
       <scope>test</scope>
     </dependency>
     <!-- logging -->
