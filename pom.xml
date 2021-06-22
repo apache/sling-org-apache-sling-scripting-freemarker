@@ -63,39 +63,10 @@
         </executions>
         <configuration>
           <redirectTestOutputToFile>true</redirectTestOutputToFile>
-          <systemProperties>
-            <property>
-              <name>bundle.filename</name>
-              <value>${basedir}/target/${project.build.finalName}.jar</value>
-            </property>
-            <property>
-              <name>jacoco.command</name>
-              <value>${jacoco.command}</value>
-            </property>
-          </systemProperties>
+          <systemPropertyVariables combine.children="append">
+            <bundle.filename>${basedir}/target/${project.build.finalName}.jar</bundle.filename>
+          </systemPropertyVariables>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.jacoco</groupId>
-        <artifactId>jacoco-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>prepare-agent</id>
-            <configuration>
-              <propertyName>jacoco.command</propertyName>
-            </configuration>
-            <goals>
-              <goal>prepare-agent</goal>
-            </goals>
-          </execution>
-          <execution>
-            <id>report</id>
-            <phase>post-integration-test</phase>
-            <goals>
-              <goal>report</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <groupId>org.apache.servicemix.tooling</groupId>
