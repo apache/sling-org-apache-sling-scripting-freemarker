@@ -32,12 +32,12 @@ import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
 import org.ops4j.pax.exam.spi.reactors.PerClass;
 import org.ops4j.pax.exam.util.Filter;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.hasItem;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.Matchers.sameInstance;
 import static org.hamcrest.Matchers.startsWith;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
 import static org.ops4j.pax.exam.CoreOptions.options;
 
 @RunWith(PaxExam.class)
@@ -61,7 +61,7 @@ public class FreemarkerScriptEngineFactoryIT extends FreemarkerTestSupport {
 
     @Test
     public void testScriptEngineFactory() {
-        assertNotNull(scriptEngineFactory);
+        assertThat(scriptEngineFactory, notNullValue());
     }
 
     @Test

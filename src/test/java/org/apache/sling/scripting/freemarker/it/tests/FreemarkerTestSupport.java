@@ -18,8 +18,6 @@
  */
 package org.apache.sling.scripting.freemarker.it.tests;
 
-import java.util.Objects;
-
 import javax.inject.Inject;
 import javax.script.ScriptEngineFactory;
 
@@ -32,8 +30,6 @@ import org.ops4j.pax.exam.Option;
 import org.ops4j.pax.exam.ProbeBuilder;
 import org.ops4j.pax.exam.TestProbeBuilder;
 import org.ops4j.pax.exam.options.ModifiableCompositeOption;
-import org.ops4j.pax.exam.options.OptionalCompositeOption;
-import org.ops4j.pax.exam.options.extra.VMOption;
 import org.ops4j.pax.exam.util.Filter;
 import org.osgi.framework.Constants;
 import org.osgi.service.http.HttpService;
@@ -44,10 +40,8 @@ import static org.apache.sling.testing.paxexam.SlingOptions.slingResourcePresenc
 import static org.apache.sling.testing.paxexam.SlingOptions.slingScripting;
 import static org.apache.sling.testing.paxexam.SlingOptions.slingScriptingJsp;
 import static org.ops4j.pax.exam.CoreOptions.composite;
-import static org.ops4j.pax.exam.CoreOptions.junitBundles;
 import static org.ops4j.pax.exam.CoreOptions.mavenBundle;
-import static org.ops4j.pax.exam.CoreOptions.vmOption;
-import static org.ops4j.pax.exam.CoreOptions.when;
+import static org.ops4j.pax.exam.cm.ConfigurationAdminOptions.factoryConfiguration;
 
 public abstract class FreemarkerTestSupport extends TestSupport {
 
@@ -81,19 +75,12 @@ public abstract class FreemarkerTestSupport extends TestSupport {
             mavenBundle().groupId("org.freemarker").artifactId("freemarker").versionAsInProject(),
             mavenBundle().groupId("org.apache.servicemix.specs").artifactId("org.apache.servicemix.specs.jaxp-api-1.4").versionAsInProject(),
             // testing
+            factoryConfiguration("org.apache.sling.jcr.repoinit.RepositoryInitializer")
+                .put("scripts", new String[]{"create path (sling:OrderedFolder) /content/freemarker\nset ACL for everyone\nallow jcr:read on /content/freemarker\nend"})
+                .asOption(),
             slingResourcePresence(),
-            mavenBundle().groupId("org.jsoup").artifactId("jsoup").versionAsInProject(),
-            mavenBundle().groupId("org.apache.servicemix.bundles").artifactId("org.apache.servicemix.bundles.hamcrest").versionAsInProject(),
-            junitBundles(),
-            jacoco() // remove with Testing PaxExam 4.0
+            mavenBundle().groupId("org.jsoup").artifactId("jsoup").versionAsInProject()
         );
-    }
-
-    // remove with Testing PaxExam 4.0
-    protected OptionalCompositeOption jacoco() {
-        final String jacocoCommand = System.getProperty("jacoco.command");
-        final VMOption option = Objects.nonNull(jacocoCommand) && !jacocoCommand.trim().isEmpty() ? vmOption(jacocoCommand) : null;
-        return when(Objects.nonNull(option)).useOptions(option);
     }
 
     @ProbeBuilder
