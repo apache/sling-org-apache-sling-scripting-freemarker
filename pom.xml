@@ -24,7 +24,7 @@
   <parent>
     <groupId>org.apache.sling</groupId>
     <artifactId>sling-bundle-parent</artifactId>
-    <version>43</version>
+    <version>49</version>
     <relativePath />
   </parent>
 
@@ -35,10 +35,10 @@
   <description>Support for FreeMarker scripting</description>
 
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <sling.java.version>8</sling.java.version>
-    <org.ops4j.pax.exam.version>4.13.4</org.ops4j.pax.exam.version>
+    <javadoc.excludePackageNames />
+    <project.build.outputTimestamp>1970-01-01T00:00:00Z</project.build.outputTimestamp>
+    <org.ops4j.pax.exam.version>4.13.3</org.ops4j.pax.exam.version>
   </properties>
 
   <scm>
@@ -75,21 +75,6 @@
     </plugins>
   </build>
 
-  <reporting>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <configuration>
-          <!-- No javadocs -->
-          <excludePackageNames>
-            org.apache.sling.scripting.freemarker
-          </excludePackageNames>
-        </configuration>
-      </plugin>
-    </plugins>
-  </reporting>
-
   <dependencies>
     <!-- javax -->
     <dependency>
@@ -121,7 +106,6 @@
     <dependency>
       <groupId>org.osgi</groupId>
       <artifactId>org.osgi.service.http</artifactId>
-      <version>1.2.1</version>
       <scope>test</scope>
     </dependency>
     <dependency>
