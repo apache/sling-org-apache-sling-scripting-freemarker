@@ -28,7 +28,7 @@ import org.osgi.service.component.annotations.Component;
         "javax.script.name=freemarker"
     }
 )
-public class FreemarkerBindingsValuesProvider implements BindingsValuesProvider {
+public final class FreemarkerBindingsValuesProvider implements BindingsValuesProvider {
 
     private static final String PROPERTIES = "properties";
 

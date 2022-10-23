@@ -36,7 +36,7 @@ import org.osgi.service.component.annotations.Reference;
         "name=adaptTo"
     }
 )
-public class AdaptToMethod implements TemplateMethodModelEx {
+public final class AdaptToMethod implements TemplateMethodModelEx {
 
     @Reference
     private AdapterManager adapterManager;

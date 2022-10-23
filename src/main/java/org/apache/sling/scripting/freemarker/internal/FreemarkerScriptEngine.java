@@ -29,7 +29,7 @@ import org.apache.sling.api.scripting.SlingBindings;
 import org.apache.sling.api.scripting.SlingScriptHelper;
 import org.apache.sling.scripting.api.AbstractSlingScriptEngine;
 
-public class FreemarkerScriptEngine extends AbstractSlingScriptEngine {
+public final class FreemarkerScriptEngine extends AbstractSlingScriptEngine {
 
     private final FreemarkerScriptEngineFactory freemarkerScriptEngineFactory;
 

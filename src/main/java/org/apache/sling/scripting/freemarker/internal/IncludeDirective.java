@@ -52,7 +52,7 @@ import org.slf4j.LoggerFactory;
         "name=include"
     }
 )
-public class IncludeDirective implements TemplateDirectiveModel {
+public final class IncludeDirective implements TemplateDirectiveModel {
 
     private static final String ADD_SELECTORS_PARAMETER_NAME = "addSelectors";
 
