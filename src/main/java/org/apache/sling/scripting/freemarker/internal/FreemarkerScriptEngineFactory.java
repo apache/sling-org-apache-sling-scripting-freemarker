@@ -60,6 +60,8 @@ import org.slf4j.LoggerFactory;
 @SuppressWarnings("java:S3077")
 public final class FreemarkerScriptEngineFactory extends AbstractScriptEngineFactory {
 
+    private static final String FREEMARKER_NAME = "FreeMarker";
+
     @Reference(
         cardinality = ReferenceCardinality.OPTIONAL,
         policy = ReferencePolicy.DYNAMIC,
@@ -72,8 +74,6 @@ public final class FreemarkerScriptEngineFactory extends AbstractScriptEngineFac
     private SortingServiceTracker<TemplateModel> templateModelTracker;
 
     private final Configuration defaultConfiguration;
-
-    private static final String FREEMARKER_NAME = "FreeMarker";
 
     private final Logger logger = LoggerFactory.getLogger(FreemarkerScriptEngineFactory.class);
 
