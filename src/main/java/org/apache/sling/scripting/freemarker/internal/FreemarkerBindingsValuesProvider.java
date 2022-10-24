@@ -32,6 +32,9 @@ public final class FreemarkerBindingsValuesProvider implements BindingsValuesPro
 
     private static final String PROPERTIES = "properties";
 
+    public FreemarkerBindingsValuesProvider() { //
+    }
+
     @Override
     public void addBindings(final Bindings bindings) {
         if (!bindings.containsKey(PROPERTIES)) {
