@@ -46,6 +46,9 @@ import org.osgi.service.metatype.annotations.Designate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Factory for {@link FreemarkerScriptEngine}s.
+ */
 @Component(
     service = ScriptEngineFactory.class,
     immediate = true,

@@ -27,6 +27,9 @@ import org.apache.sling.commons.classloader.DynamicClassLoaderManager;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 
+/**
+ * Support for Sling's adaptTo() in FreeMarker templates.
+ */
 @Component(
     service = {
         TemplateModel.class

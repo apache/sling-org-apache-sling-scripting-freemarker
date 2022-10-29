@@ -23,6 +23,9 @@ import org.apache.sling.api.scripting.SlingBindings;
 import org.apache.sling.scripting.api.BindingsValuesProvider;
 import org.osgi.service.component.annotations.Component;
 
+/**
+ * Bindings provider for Resource properties.
+ */
 @Component(
     property = {
         "javax.script.name=freemarker"

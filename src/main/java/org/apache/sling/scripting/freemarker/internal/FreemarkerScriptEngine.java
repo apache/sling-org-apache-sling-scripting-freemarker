@@ -29,6 +29,9 @@ import org.apache.sling.api.scripting.SlingBindings;
 import org.apache.sling.api.scripting.SlingScriptHelper;
 import org.apache.sling.scripting.api.AbstractSlingScriptEngine;
 
+/**
+ * Script Engine using FreeMarker's templates.
+ */
 public final class FreemarkerScriptEngine extends AbstractSlingScriptEngine {
 
     private final FreemarkerScriptEngineFactory freemarkerScriptEngineFactory;

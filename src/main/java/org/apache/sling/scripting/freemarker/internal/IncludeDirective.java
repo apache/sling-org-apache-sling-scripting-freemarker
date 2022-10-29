@@ -43,6 +43,9 @@ import org.osgi.service.component.annotations.Component;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Support for Sling Include in FreeMarker templates.<br>Includes a Resource rendering into the current template.
+ */
 @Component(
     service = {
         TemplateModel.class
