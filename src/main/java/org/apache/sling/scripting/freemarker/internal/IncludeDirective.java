@@ -71,7 +71,7 @@ public final class IncludeDirective implements TemplateDirectiveModel {
     }
 
     @Override
-    @SuppressWarnings("checkstyle:AvoidInlineConditionals")
+    @SuppressWarnings({"checkstyle:AvoidInlineConditionals", "checkstyle:NPathComplexity"})
     public void execute(final Environment environment, final Map parameters, final TemplateModel[] loopVars, final TemplateDirectiveBody body) throws TemplateException, IOException {
 
         final SlingHttpServletRequest slingHttpServletRequest = (SlingHttpServletRequest) DeepUnwrap.unwrap(environment.getVariable(SlingBindings.REQUEST));
