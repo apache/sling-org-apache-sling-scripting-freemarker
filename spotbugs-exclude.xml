@@ -23,4 +23,9 @@
     <Class name="org.apache.sling.scripting.freemarker.internal.FreemarkerScriptEngine"/>
     <Field name="freemarkerScriptEngineFactory"/>
   </Match>
+  <Match>
+    <Bug pattern="TEMPLATE_INJECTION_FREEMARKER"/>
+    <Class name="org.apache.sling.scripting.freemarker.internal.FreemarkerScriptEngine"/>
+    <Method name="eval"/>
+  </Match>
 </FindBugsFilter>
