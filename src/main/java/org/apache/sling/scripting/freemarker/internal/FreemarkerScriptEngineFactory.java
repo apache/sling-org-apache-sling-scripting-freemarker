@@ -88,6 +88,7 @@ public final class FreemarkerScriptEngineFactory extends AbstractScriptEngineFac
     }
 
     @Activate
+    @SuppressWarnings("unused")
     private void activate(final FreemarkerScriptEngineFactoryConfiguration configuration, final BundleContext bundleContext) {
         logger.debug("activate");
         configure(configuration);
@@ -97,12 +98,14 @@ public final class FreemarkerScriptEngineFactory extends AbstractScriptEngineFac
     }
 
     @Modified
+    @SuppressWarnings("unused")
     private void modified(final FreemarkerScriptEngineFactoryConfiguration configuration) {
         logger.debug("modified");
         configure(configuration);
     }
 
     @Deactivate
+    @SuppressWarnings("unused")
     private void deactivate() {
         logger.debug("deactivate");
         templateModelTracker.close();
