@@ -28,4 +28,9 @@
     <Class name="org.apache.sling.scripting.freemarker.internal.FreemarkerScriptEngine"/>
     <Method name="eval"/>
   </Match>
+  <Match>
+    <Bug pattern="REQUESTDISPATCHER_FILE_DISCLOSURE"/>
+    <Class name="org.apache.sling.scripting.freemarker.internal.IncludeDirective"/>
+    <Method name="dispatch"/>
+  </Match>
 </FindBugsFilter>
