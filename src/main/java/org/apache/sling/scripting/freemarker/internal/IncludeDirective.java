@@ -71,6 +71,7 @@ public final class IncludeDirective implements TemplateDirectiveModel {
     }
 
     @Override
+    @SuppressWarnings("checkstyle:AvoidInlineConditionals")
     public void execute(final Environment environment, final Map parameters, final TemplateModel[] loopVars, final TemplateDirectiveBody body) throws TemplateException, IOException {
 
         final SlingHttpServletRequest slingHttpServletRequest = (SlingHttpServletRequest) DeepUnwrap.unwrap(environment.getVariable(SlingBindings.REQUEST));
@@ -148,6 +149,7 @@ public final class IncludeDirective implements TemplateDirectiveModel {
         return dispatch(requestDispatcher, slingHttpServletRequest, slingHttpServletResponse);
     }
 
+    @SuppressWarnings("checkstyle:AvoidInlineConditionals")
     private String dispatch(final String path, final RequestDispatcherOptions requestDispatcherOptions, final SlingHttpServletRequest slingHttpServletRequest, final SlingHttpServletResponse slingHttpServletResponse) {
         // ensure the path is absolute and normalized
         final String absolutePath = path.startsWith("/") ? path : String.format("%s/%s", slingHttpServletRequest.getResource().getPath(), path);
