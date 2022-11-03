@@ -22,7 +22,6 @@ import javax.script.Bindings;
 import javax.script.ScriptContext;
 import javax.script.ScriptException;
 
-import freemarker.log.Logger;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import org.apache.sling.api.scripting.SlingBindings;
@@ -35,8 +34,6 @@ import org.apache.sling.scripting.api.AbstractSlingScriptEngine;
 public final class FreemarkerScriptEngine extends AbstractSlingScriptEngine {
 
     private final FreemarkerScriptEngineFactory freemarkerScriptEngineFactory;
-
-    private final Logger logger = Logger.getLogger(FreemarkerScriptEngine.class.getName());
 
     public FreemarkerScriptEngine(final FreemarkerScriptEngineFactory freemarkerScriptEngineFactory) {
         super(freemarkerScriptEngineFactory);
@@ -59,10 +56,11 @@ public final class FreemarkerScriptEngine extends AbstractSlingScriptEngine {
         try {
             final Template template = new Template(scriptName, reader, configuration);
             template.process(bindings, scriptContext.getWriter());
-        } catch (Throwable t) {
+        } catch (Exception e) {
             final String message = String.format("Failure processing FreeMarker template %s.", scriptName);
-            logger.error(message, t);
-            throw new ScriptException(message);
+            final ScriptException scriptException = new ScriptException(message);
+            scriptException.initCause(e);
+            throw scriptException;
         }
 
         return null;
