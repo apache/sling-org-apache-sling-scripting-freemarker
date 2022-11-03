@@ -43,6 +43,7 @@ public final class FreemarkerScriptEngine extends AbstractSlingScriptEngine {
         this.freemarkerScriptEngineFactory = freemarkerScriptEngineFactory;
     }
 
+    @SuppressWarnings("checkstyle:IllegalCatch")
     public Object eval(final Reader reader, final ScriptContext scriptContext) throws ScriptException {
         final Bindings bindings = scriptContext.getBindings(ScriptContext.ENGINE_SCOPE);
         final SlingScriptHelper helper = (SlingScriptHelper) bindings.get(SlingBindings.SLING);
