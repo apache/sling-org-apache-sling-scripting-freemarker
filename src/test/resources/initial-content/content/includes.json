@@ -1,0 +1,13 @@
+{
+    "jcr:primaryType": "nt:unstructured",
+    "foo": {
+        "jcr:primaryType": "nt:unstructured",
+        "sling:resourceType": "jsp/page/resource",
+        "title": "Foo"
+    },
+    "bar": {
+        "jcr:primaryType": "nt:unstructured",
+        "sling:resourceType": "jsp/page/resource",
+        "title": "Bar"
+    }
+}

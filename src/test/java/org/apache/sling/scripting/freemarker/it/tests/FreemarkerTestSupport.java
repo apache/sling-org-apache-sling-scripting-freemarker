@@ -76,7 +76,10 @@ public abstract class FreemarkerTestSupport extends TestSupport {
             mavenBundle().groupId("org.apache.servicemix.specs").artifactId("org.apache.servicemix.specs.jaxp-api-1.4").versionAsInProject(),
             // testing
             factoryConfiguration("org.apache.sling.jcr.repoinit.RepositoryInitializer")
-                .put("scripts", new String[]{"create path (sling:OrderedFolder) /content/freemarker\nset ACL for everyone\nallow jcr:read on /content/freemarker\nend"})
+                .put("scripts", new String[]{
+                    "create path (sling:OrderedFolder) /content/freemarker\nset ACL for everyone\nallow jcr:read on /content/freemarker\nend",
+                    "create path (sling:OrderedFolder) /content/includes\nset ACL for everyone\nallow jcr:read on /content/includes\nend"
+                })
                 .asOption(),
             slingResourcePresence(),
             mavenBundle().groupId("org.jsoup").artifactId("jsoup").versionAsInProject()

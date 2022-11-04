@@ -23,8 +23,14 @@
   <title>Sling Include (with JSP)</title>
 </head>
 <body>
-<span id="simple">
+<span id="resource">
 <@sling.include include=resource resourceType="jsp/page/resource"/>
+</span>
+<span id="abspath">
+<@sling.include include="/content/includes/foo"/>
+</span>
+<span id="relpath">
+<@sling.include include="../../includes/bar"/>
 </span>
 </body>
 </html>

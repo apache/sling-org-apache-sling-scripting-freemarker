@@ -73,9 +73,21 @@ public class IncludeIT extends FreemarkerTestSupport {
     }
 
     @Test
-    public void testJspIncludeSimple() {
-        final Element simple = document.getElementById("simple");
-        assertThat(simple.text(), is("/content/freemarker/include"));
+    public void testJspIncludeResource() {
+        final Element element = document.getElementById("resource");
+        assertThat(element.text(), is("/content/freemarker/include"));
+    }
+
+    @Test
+    public void testJspIncludeAbspath() {
+        final Element element = document.getElementById("abspath");
+        assertThat(element.text(), is("/content/includes/foo"));
+    }
+
+    @Test
+    public void testJspIncludeRelpath() {
+        final Element element = document.getElementById("relpath");
+        assertThat(element.text(), is("/content/includes/bar"));
     }
 
 }
