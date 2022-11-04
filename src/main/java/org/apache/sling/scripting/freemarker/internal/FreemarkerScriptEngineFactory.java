@@ -60,7 +60,7 @@ import org.slf4j.LoggerFactory;
 @Designate(
     ocd = FreemarkerScriptEngineFactoryConfiguration.class
 )
-@SuppressWarnings("java:S3077")
+@SuppressWarnings({"java:S1117", "java:S3077"})
 public final class FreemarkerScriptEngineFactory extends AbstractScriptEngineFactory {
 
     private static final String FREEMARKER_NAME = "FreeMarker";
