@@ -146,10 +146,8 @@ public final class FreemarkerScriptEngineFactory extends AbstractScriptEngineFac
             final String namespace = (String) serviceReference.getProperty("namespace");
             final String name = (String) serviceReference.getProperty("name");
             if (StringUtils.isNotBlank(namespace) && StringUtils.isNotBlank(name)) {
-                if (!models.containsKey(namespace)) {
-                    models.put(namespace, new HashMap<>());
-                }
-                models.get(namespace).put(name, bundleContext.getService(serviceReference));
+                final Map<String, TemplateModel> map = models.computeIfAbsent(namespace, k -> new HashMap<>());
+                map.put(name, bundleContext.getService(serviceReference));
             }
         }
         return models;
