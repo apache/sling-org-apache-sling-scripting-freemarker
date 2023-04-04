@@ -1,3 +1,13 @@
 github:
   dependabot_alerts: false
   dependabot_updates: false
+  autolink_jira:
+  - "SLING"
+  - "OAK"
+  - "JCR"
+  - "JCRVLT"
+  - "INFRA"
+  - "FELIX"
+  - "MNG"
+notifications:
+  jira_options: "link"
